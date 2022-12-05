@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import common.MemberVO;
 
 public class UserDAO {
+	
+	//회원등록
 	public int insert(MemberVO member) {
 		String query = "INSERT INTO member_tbl_02 (custno, custname, phone, address, joindate, grade, city)"
 				+ " VALUES((SELECT IFNULL(MAX(custno) + 1, 1) FROM member_tbl_02 mt), ?, ?, ?, ?, ?, ?)";
@@ -37,6 +39,7 @@ public class UserDAO {
 		return 0;
 	}
 	
+	// 회원목록 조회
 	public ArrayList<MemberVO> selectAll(){
 		ArrayList<MemberVO> list = new ArrayList<>();
 		String query = "SELECT * FROM member_tbl_02";
@@ -61,6 +64,32 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	// 회원조회
+	public MemberVO selectOne(int custno) {
+		MemberVO member = new MemberVO();
+		Connection conn = DBcon.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM member_tbl_02 WHERE custno = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, custno);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member.setCustno(rs.getInt("custno"));
+				member.setCustname(rs.getString("custname"));
+				member.setPhone(rs.getString("phone"));
+				member.setAddress(rs.getString("address"));
+				member.setJoindate(rs.getString("joindate"));
+				member.setGrade(rs.getString("grade"));
+				member.setCity(rs.getString("city"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return member;
 	}
 
 }

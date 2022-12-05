@@ -26,7 +26,7 @@ ArrayList<MemberVO> list = (ArrayList<MemberVO>) request.getAttribute("list");
 	for(MemberVO member : list){
 	%>
 	<tr>
-		<td><%=member.getCustno() %></td>
+		<td><a href="DetailServlet?custno=<%=member.getCustno() %>"><%=member.getCustno() %></a></td>
 		<td><%=member.getCustname() %></td>
 		<td><%=member.getPhone() %></td>
 		<td><%=member.getAddress() %></td>

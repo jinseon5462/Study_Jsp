@@ -45,6 +45,37 @@
 			</td>
 	</table>
 </form>
-
+<script>
+function check(){
+	if(document.frm.custname.value == ""){
+		alert("회원성명이 입력되지 않았습니다.");
+		document.frm.name.focus();
+		return false;
+	}else if(document.frm.phone.value == ""){
+		alert("회원전화가 입력되지 않았습니다.");
+		document.frm.phone.focus();
+		return false;
+	}else if(document.frm.address.value == ""){
+		alert("회원주소가 입력되지 않았습니다.");
+		document.frm.address.focus();
+		return false;
+	}else if(document.frm.joindate.value == ""){
+		alert("가입일자가 입력되지 않았습니다.");
+		document.frm.joindate.focus();
+		return false;
+	}else if(document.frm.grade.value == ""){
+		alert("고객등급이 입력되지 않았습니다.");
+		document.frm.grade.focus();
+		return false;
+	}else if(document.frm.city.value == ""){
+		alert("도시코드가 입력되지 않았습니다.");
+		document.frm.grade.focus();
+		return false;
+	}else{
+		alert("회원등록이 완료되었습니다!!");
+		return true;
+	}
+}
+</script>
 </body>
 </html>
