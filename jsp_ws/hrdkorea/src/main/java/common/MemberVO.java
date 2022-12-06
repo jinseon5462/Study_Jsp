@@ -7,10 +7,17 @@ public class MemberVO {
 	private String custname;
 	private String phone;
 	private String address;
-	private String joindate;
+	private Date joindate;
 	private String grade;
 	private String city;
+	private int total;
 	
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
 	public int getCustno() {
 		return custno;
 	}
@@ -35,10 +42,10 @@ public class MemberVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getJoindate() {
+	public Date getJoindate() {
 		return joindate;
 	}
-	public void setJoindate(String joindate) {
+	public void setJoindate(Date joindate) {
 		this.joindate = joindate;
 	}
 	public String getGrade() {

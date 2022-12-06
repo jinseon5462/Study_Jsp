@@ -12,6 +12,9 @@ ArrayList<MemberVO> list = (ArrayList<MemberVO>) request.getAttribute("list");
 <title>회원 목록</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+<jsp:include page="navigation.jsp"/>
+<h3>회원목록조회</h3>
 <table border="1">
 	<tr>
 		<th>회원번호</th>
@@ -38,5 +41,6 @@ ArrayList<MemberVO> list = (ArrayList<MemberVO>) request.getAttribute("list");
 	}
 	%>
 </table>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

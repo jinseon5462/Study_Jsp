@@ -1,5 +1,11 @@
+<%@page import="db.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	UserDAO uDao = new UserDAO();
+	int custno = uDao.showCustno();
+	String date = uDao.getRegDate();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +13,14 @@
 <title>회원 등록 페이지</title>
 </head>
 <body>
-<h1>회원 등록 페이지</h1>
-<hr>
+<jsp:include page="header.jsp"/>
+<jsp:include page="navigation.jsp"/>
+<h3>회원 등록</h3>
 <form name= "frm" action="RegServlet" method="post">
 	<table border="1">
 		<tr>
 			<th>회원번호(자동발생)</th>
-			<td><input type="custno" value="" readonly></td>
+			<td><input type="custno" name="custno" value="<%=custno %>" readonly></td>
 		</tr>
 		<tr>
 			<th>회원성명</th>
@@ -29,7 +36,7 @@
 		</tr>
 		<tr>
 			<th>가입일자</th>
-			<td><input type="text" name="joindate"></td>
+			<td><input type="text" name="joindate" value="<%=date%>" readonly></td>
 		</tr>
 		<tr>
 			<th>고객등급(A : VIP, B : 일반, C : 직원)</th>
@@ -42,6 +49,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="submit" value="등록" onclick="return check()">&nbsp;&nbsp;
+				<input type="button" value="조회" onclick="move()">
 			</td>
 	</table>
 </form>
@@ -77,5 +85,11 @@ function check(){
 	}
 }
 </script>
+<script>
+function move(){
+	location.href="MemberListServlet";
+}
+</script>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>
