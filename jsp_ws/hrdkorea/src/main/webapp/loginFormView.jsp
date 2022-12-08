@@ -43,6 +43,8 @@ function check(){
 		alert("비밀번호를 입력하세요.");
 		document.frm.pw.focus();
 		return false;
+	}else{
+		return true;
 	}
 }
 function guest(){
