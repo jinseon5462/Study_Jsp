@@ -37,7 +37,11 @@
          UserDatabaseRealm to authenticate users
     -->
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
+  	<Resource auth="Container" driverClassName="org.mariadb.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="jdbc/maria" password="1234" type="javax.sql.DataSource" url="jdbc:mariadb://localhost:3306/mydb" username="root"/>
+  
+  
   </GlobalNamingResources>
+  
 
   <!-- A "Service" is a collection of one or more "Connectors" that share
        a single "Container" Note:  A "Service" is not itself a "Container",
@@ -152,7 +156,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="hrdkorea" path="/hrdkorea" reloadable="true" source="org.eclipse.jst.jee.server:hrdkorea"/><Context docBase="jspClass" path="/jspClass" reloadable="true" source="org.eclipse.jst.jee.server:jspClass"/><Context docBase="hrdkorea02" path="/hrdkorea02" reloadable="true" source="org.eclipse.jst.jee.server:hrdkorea02"/><Context docBase="jspClassPractice" path="/jspClassPractice" reloadable="true" source="org.eclipse.jst.jee.server:jspClassPractice"/><Context docBase="hrdkorea03" path="/hrdkorea03" reloadable="true" source="org.eclipse.jst.jee.server:hrdkorea03"/></Host>
+      <Context docBase="ex05" path="/ex05" reloadable="true" source="org.eclipse.jst.jee.server:ex05"/></Host>
     </Engine>
   </Service>
 </Server>
