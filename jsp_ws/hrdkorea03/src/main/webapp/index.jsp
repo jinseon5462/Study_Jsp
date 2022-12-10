@@ -18,6 +18,5 @@
 과정평가형 자격은<br>
 현장 중심형 인재육성을 지원합니다.<br><br>
 <jsp:include page="footer.jsp"/>
-
 </body>
 </html>
