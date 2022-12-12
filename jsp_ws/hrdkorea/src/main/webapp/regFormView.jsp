@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
 	UserDAO uDao = new UserDAO();
 	int custno = uDao.showCustno();
 	String date = uDao.getRegDate();
