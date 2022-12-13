@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	session.getAttribute("id");
+	String id = (String)session.getAttribute("id");
 %>
 <h2>회원관리 프로그램 v1.0</h2>
 <hr>

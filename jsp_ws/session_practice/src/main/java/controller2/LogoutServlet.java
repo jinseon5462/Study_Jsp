@@ -1,4 +1,4 @@
-package controller;
+package controller2;
 
 import java.io.IOException;
 
@@ -7,18 +7,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import db.MemberDAO;
-
-@WebServlet("/DeleteServlet")
-public class DeleteServlet extends HttpServlet {
+@WebServlet("/session_login2/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	MemberDAO m = new MemberDAO();
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int result = m.delete(request.getParameter("id"));
-		request.setAttribute("result", result);
-		request.getRequestDispatcher("ListServlet").forward(request, response);
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		response.sendRedirect("index_session.jsp");
 	}
+
 }

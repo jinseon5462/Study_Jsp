@@ -116,7 +116,6 @@ public class MemberDAO {
 	}
 
 	public int loginCheck(String id, String pw) {
-		int result = 0;
 		Connection conn = DBcon.getConnection();
 		String query = "SELECT * FROM member WHERE id = ?";
 		try {
@@ -124,13 +123,48 @@ public class MemberDAO {
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				if(id.equals(rs.getString("id")) && pw.equals(rs.getString("pw"))) {
-					result = 1;	// 로그인 성공
+				if(pw.equals(rs.getString("pw"))) {
+					return 1;	//로그인 성공
+				}else {
+					return 0;	//비밀번호 오류
 				}
 			}
+			return -1;	// 존재하지않는 아이디
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -2;	// ? 기본값으로 -2 설정
+	}
+	
+	public int checkEvent(String id) {
+		int result = 0;
+		Connection conn = DBcon.getConnection();
+		String query = "SELECT COUNT(id) cnt FROM event_tbl WHERE id = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			result = rs.getInt("cnt");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
+	
+	public int regEvent(String id) {
+		int result = 0;
+		Connection conn = DBcon.getConnection();
+		String query = "INSERT INTO event_tbl (id) VALUES(?)";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
 }

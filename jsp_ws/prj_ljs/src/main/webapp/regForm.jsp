@@ -28,7 +28,17 @@
 </form>
 
 <jsp:include page="footer.jsp"/>
-
+<c:if test="${result == 1 }">
+	<script>
+		alert("등록성공!");
+		location.href="ListServlet";
+	</script>
+</c:if>
+<c:if test="${result == 0 }">
+	<script>
+		alert("등록실패...");
+	</script>
+</c:if>
 <script>
 	function idCheck(){
 		if(document.frm.id.value == ""){
@@ -44,7 +54,11 @@
 	}
 	
 	function regCheck(){
-		if(document.frm.pw.value == ""){
+		if(document.frm.id.value == ""){
+			alert("아이디를 입력하세요.");
+			document.frm.id.focus();
+			return false;
+		}else if(document.frm.pw.value == ""){
 			alert("비밀번호를 입력하세요.");
 			document.frm.pw.focus();
 			return false;

@@ -10,15 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import db.MemberDAO;
 
-@WebServlet("/DeleteServlet")
-public class DeleteServlet extends HttpServlet {
+@WebServlet("/RegEventServlet")
+public class RegEventServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	MemberDAO m = new MemberDAO();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int result = m.delete(request.getParameter("id"));
-		request.setAttribute("result", result);
-		request.getRequestDispatcher("ListServlet").forward(request, response);
+		String id = request.getParameter("id");
+		m.regEvent(id);
+		response.sendRedirect("index.jsp");
 	}
+
 }

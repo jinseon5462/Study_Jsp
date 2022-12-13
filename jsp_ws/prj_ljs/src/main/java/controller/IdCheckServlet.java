@@ -19,6 +19,6 @@ public class IdCheckServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		int result = m.idCheck(id);
 		request.setAttribute("result", result);
-		request.getRequestDispatcher("pop.jsp").forward(request, response);
+		request.getRequestDispatcher("pop_checkId.jsp").forward(request, response);
 	}
 }

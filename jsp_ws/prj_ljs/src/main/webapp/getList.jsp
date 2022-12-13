@@ -18,7 +18,7 @@
 <jsp:include page="header.jsp"/>
 <h2>회원목록</h2>
 <hr>
-<table border="1">
+<table border="1" style="text-align:center;">
 	<tr>
 		<th>아이디</th>
 		<th>비밀번호</th>
