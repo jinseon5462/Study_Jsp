@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class BoardVO {
-	
+	private int num;
 	private int view;
 	private String title;
 	private String content;  
@@ -19,4 +19,5 @@ public class BoardVO {
 	private Date postdate;
 	private int visitcount;
 	private String name;
+	private int count;
 }

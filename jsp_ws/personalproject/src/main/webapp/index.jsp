@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지</title>
+<title>Insert title here</title>
 </head>
 <body>
-<a href="getlist.do?page=1">목록보기</a>
+	<script>
+		location.href = "login.jsp";
+	</script>
 </body>
 </html>
