@@ -9,22 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import common.BoardVO;
-import db.BoardDAO;
+import common.FileVO;
+import db.FileDAO;
 
-@WebServlet("/getlist.do")
-public class ListServlet extends HttpServlet {
+@WebServlet("/getmylist.do")
+public class MyListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	BoardDAO board = new BoardDAO();
-	
+	FileDAO fDao = new FileDAO();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int page = Integer.parseInt(request.getParameter("page"));
-		ArrayList<BoardVO> list = board.selectPageList(page);
-		int pageCount = board.pageCount();
-		
+		String id = request.getParameter("id");
+		ArrayList<FileVO> list = fDao.getMyList(id);
 		request.setAttribute("list", list);
-		request.setAttribute("pageCount", pageCount);
-		request.getRequestDispatcher("getList.jsp").forward(request, response);
+		request.getRequestDispatcher("getMyList.jsp").forward(request, response);
 	}
 }

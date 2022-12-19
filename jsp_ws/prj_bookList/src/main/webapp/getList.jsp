@@ -7,7 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	ArrayList<BoardVO> list = (ArrayList<BoardVO>)request.getAttribute("list");
-	ArrayList<BoardVO> allList = (ArrayList<BoardVO>)request.getAttribute("allList");
+	int pageCount = (Integer)request.getAttribute("pageCount");
+	//ArrayList<BoardVO> allList = (ArrayList<BoardVO>)request.getAttribute("allList");
 	//int pageCount = (Integer)request.getAttribute("pageCount");
 	int cnt = 1;
 %>
@@ -17,6 +18,11 @@
 <meta charset="UTF-8">
 <title>목록 조회</title>
 </head>
+<style>
+	a {
+		text-decoration: none;
+	}
+</style>
 <body>
 
 <h1 style="text-align:center;">목록</h1>
@@ -48,7 +54,6 @@
 <div style="text-align:center;">
 
 <!-- 
-
 <c:forEach var="pageCount" items="${list }">
 	<c:if test="${pageCount.count % 10 == 0 }">
 		<a href="getlist.do?page=<%=cnt%>"><%=cnt++ %></a>&nbsp;
@@ -62,10 +67,45 @@
 </c:forEach>
 <a href="getList.jsp?">다음</a>
  -->
-<c:forEach var="start" begin="1" end="5">
-	<a href="getlist.do?start=">${start }</a>
-</c:forEach>
+<c:set var="realEnd" value="${pageCount }"/>
 
+<c:if test="${empty param.start }">
+	<c:set var="start" value="${param.page }"/>
+</c:if>
+
+<c:set var="end" value="${start + 4 }"/>
+
+${start }
+${end }
+<hr>
+<c:if test="${start > 1 }">
+	<a href="getlist.do?page=1">&nbsp;<<&nbsp;</a>
+</c:if>
+
+<c:if test="${start > 5}">
+	<a href="getlist.do?page=${start - 5 }">&nbsp;<&nbsp;</a>&nbsp;&nbsp;
+</c:if>
+<!-- 
+<c:forEach var="pageNum" begin="${start }" end="${(end > realEnd) ? realEnd : end}">
+	<a href="getlist.do?page=${pageNum}">${pageNum }</a>
+</c:forEach>
+ -->
+<c:if test="${start < 6 }">
+<c:forEach var="pNum" begin="1" end="5">
+	<a href="getlist.do?page=${pNum }">${pNum }</a>
+</c:forEach>
+</c:if>
+<c:if test="${start < 11 && start > 5}">
+<c:forEach var="pNum" begin="1" end="5">
+	<a href="getlist.do?page=${pNum }">${pNum }</a>
+</c:forEach>
+</c:if>
+<c:if test="${end < realEnd }">
+	<a href="getlist.do?page=${end + 1 }">&nbsp;>&nbsp;</a>
+</c:if>
+<c:if test="${start >= 1 }">
+	<a href="getlist.do?page=16">&nbsp;>>&nbsp;</a>
+</c:if>
 </div>
 
 </body>

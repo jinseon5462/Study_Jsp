@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script>
-		location.href = "login.jsp";
-	</script>
+<form action="listPaging.jsp" method="get">
+	<input type="text" name="start">
+	<input type="submit" value="전송">
+</form>
 </body>
 </html>

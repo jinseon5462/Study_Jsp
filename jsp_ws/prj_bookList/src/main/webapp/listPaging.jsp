@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:set var="realEnd" value="11"/>
+<c:set var="realEnd" value="20"/>
 <!-- 시작 번호 받아서 시작번호와 끝번호 설정하기 -->
 <c:if test="${empty param.start }">
 	<c:set var="start" value="${param.start }"/>
